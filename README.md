@@ -56,6 +56,28 @@ Create a new file `now.json`
 $ now
 ```
 
+### [Heroku](https://www.heroku.com/)
+
+Follow `heroku` [installation process](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up).
+
+```bash
+$ heroku create
+```
+
+Add config vars
+
+```bash
+$ heroku config:set TWITTER_CONSUMER_KEY=
+$ heroku config:set TWITTER_CONSUMER_SECRET=
+$ heroku config:set TWITTER_ACCESS_TOKEN=
+$ heroku config:set TWITTER_ACCESS_TOKEN_SECRET=
+```
+
+```bash
+$ git push heroku master
+$ heroku open
+```
+
 ## Usage
 
 ### Twitter
