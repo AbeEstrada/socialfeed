@@ -73,6 +73,25 @@ $ git push heroku master
 $ heroku open
 ```
 
+### [Google App Engine](https://cloud.google.com/appengine/)
+
+Follow `gcloud` [installation process](https://cloud.google.com/nodejs/docs/setup#install_the_google_cloud_sdk).
+
+Create a new file `app.yaml`
+
+```yaml
+runtime: nodejs8
+env_variables:
+  TWITTER_CONSUMER_KEY: ""
+  TWITTER_CONSUMER_SECRET: ""
+  TWITTER_ACCESS_TOKEN: ""
+  TWITTER_ACCESS_TOKEN_SECRET: ""
+```
+
+```bash
+$ gcloud app deploy
+```
+
 ## Usage
 
 ### Twitter
