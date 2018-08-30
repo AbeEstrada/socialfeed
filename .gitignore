@@ -1,0 +1,5 @@
+.DS_Store
+.env
+up.json
+now.json
+node_modules
