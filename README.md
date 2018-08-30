@@ -62,18 +62,13 @@ Follow `heroku` [installation process](https://devcenter.heroku.com/articles/get
 
 ```bash
 $ heroku create
-```
 
-Add config vars
-
-```bash
+# Add config vars
 $ heroku config:set TWITTER_CONSUMER_KEY=
 $ heroku config:set TWITTER_CONSUMER_SECRET=
 $ heroku config:set TWITTER_ACCESS_TOKEN=
 $ heroku config:set TWITTER_ACCESS_TOKEN_SECRET=
-```
 
-```bash
 $ git push heroku master
 $ heroku open
 ```
