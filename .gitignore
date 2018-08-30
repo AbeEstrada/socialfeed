@@ -1,5 +1,7 @@
 .DS_Store
 .env
+.gcloudignore
+app.yaml
 up.json
 now.json
 node_modules
