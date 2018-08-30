@@ -72,4 +72,4 @@ Eg: `https://domain.com/instagram/hilaryduff`
 
 ---
 
-Inspired by [RSSHub](https://github.com/DIYgod/RSSHub)
+With code from [RSSHub](https://github.com/DIYgod/RSSHub)
