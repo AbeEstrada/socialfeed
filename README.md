@@ -1,3 +1,7 @@
+## Requirements
+
+- [Twitter API keys](https://developer.twitter.com/en/apps)
+
 ## Development
 
 ```bash
