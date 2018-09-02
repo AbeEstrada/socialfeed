@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Twit = require("twit");
 const RSS = require("rss");
-const linkifyUrls = require("linkify-urls");
+const tweet2html = require("tweet-html");
 
 const config = require("../config");
 
@@ -31,24 +31,11 @@ router.get("/:user", async (req, res) => {
   });
   data.map(item => {
     item = item.retweeted_status || item;
-    let img = "";
-    item.extended_entities &&
-      item.extended_entities.media.forEach(item => {
-        img += `<br>${item.type === "video" ? "Video: " : ""}<img referrerpolicy="no-referrer" src="${
-          item.media_url_https
-        }">`;
-      });
-    const full_text = linkifyUrls(item.full_text, {
-      attributes: {
-        target: "_blank",
-        rel: "noreferrer"
-      }
-    });
     feed.item({
       title: `${item.in_reply_to_screen_name ? "Re " : ""}${
         item.full_text.length > 30 ? item.full_text.slice(0, 30) + "..." : item.full_text
       }`,
-      description: `<p>${item.in_reply_to_screen_name ? "Re " : ""}${full_text}<br>${img}</p>`,
+      description: `${tweet2html(item, user)}`,
       date: new Date(item.created_at).toUTCString(),
       url: `https://twitter.com/${user}/status/${item.id_str}`
     });
