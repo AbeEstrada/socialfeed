@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Twit = require("twit");
 const RSS = require("rss");
+const linkifyUrls = require("linkify-urls");
 
 const config = require("../config");
 
@@ -37,11 +38,17 @@ router.get("/:user", async (req, res) => {
           item.media_url_https
         }">`;
       });
+    const full_text = linkifyUrls(item.full_text, {
+      attributes: {
+        target: "_blank",
+        rel: "noreferrer"
+      }
+    });
     feed.item({
       title: `${item.in_reply_to_screen_name ? "Re " : ""}${
         item.full_text.length > 30 ? item.full_text.slice(0, 30) + "..." : item.full_text
       }`,
-      description: `${item.in_reply_to_screen_name ? "Re " : ""}${item.full_text}${img}`,
+      description: `<p>${item.in_reply_to_screen_name ? "Re " : ""}${full_text}<br>${img}</p>`,
       date: new Date(item.created_at).toUTCString(),
       url: `https://twitter.com/${user}/status/${item.id_str}`
     });
