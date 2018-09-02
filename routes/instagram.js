@@ -3,10 +3,6 @@ const router = express.Router();
 const axios = require("axios");
 const RSS = require("rss");
 
-router.get("/", (req, res) => {
-  res.status(404).json({ error: "not found" });
-});
-
 router.get("/:user", async (req, res) => {
   const user = req.params.user;
   const response = await axios({

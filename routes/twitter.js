@@ -8,10 +8,6 @@ const config = require("../config");
 
 const T = new Twit(config.twitter);
 
-router.get("/", (req, res) => {
-  res.status(404).json({ error: "not found" });
-});
-
 router.get("/:user", async (req, res) => {
   const user = req.params.user;
   const result = await T.get("statuses/user_timeline", {
