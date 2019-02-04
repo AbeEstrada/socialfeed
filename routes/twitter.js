@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Twit = require("twit");
 const RSS = require("rss");
-const tweet2html = require("tweet-html");
+const tweetPatch = require("tweet-patch");
 
 const config = require("../config");
 
@@ -31,7 +31,7 @@ router.get("/:user", async (req, res) => {
       title: `${item.in_reply_to_screen_name ? "Re " : ""}${
         item.full_text.length > 30 ? item.full_text.slice(0, 30) + "..." : item.full_text
       }`,
-      description: `${tweet2html(item, user)}`,
+      description: `${tweetPatch(item.text || item.full_text)}`,
       date: new Date(item.created_at).toUTCString(),
       url: `https://twitter.com/${user}/status/${item.id_str}`
     });
